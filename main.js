@@ -23,6 +23,10 @@ var cars = [
 ];
 
 cars.sort((araba1, araba2) => {
+  araba1.yil - araba2.yil;
+});
+console.log(cars);
+cars.sort((araba1, araba2) => {
   return araba1.marka.localeCompare(araba2.marka);
 });
 console.log(cars);
@@ -123,7 +127,7 @@ document.write("getFullYear: " + tarih + "<br>" + "<br>");
 
 document.write("-------------------------------------" + "<br>");
 
-örnek;
+//örnek;
 
 const hourEl = document.getElementById("hour");
 const minuteEl = document.getElementById("minutes");
@@ -137,24 +141,24 @@ function updateClock() {
   let h = new Date().getHours();
   let m = new Date().getMinutes();
   let s = new Date().getSeconds();
-  let ampm = "AM";//Bu satırda, başlangıç değeri "AM" olan bir ampm değişkeni tanımlıyoruz. Bu değişken, saatin AM mi yoksa PM mi olduğunu belirlemek için kullanılacak.
- // Bu üç satırda, new Date() objesi ile şu anki tarihi ve saati alıyoruz. getHours() metoduyla saat, getMinutes() metoduyla dakika ve getSeconds() metoduyla saniye bilgilerini alıyoruz ve bunları sırasıyla h, m ve s değişkenlerine atıyoruz.
+  let ampm = "AM"; //Bu satırda, başlangıç değeri "AM" olan bir ampm değişkeni tanımlıyoruz. Bu değişken, saatin AM mi yoksa PM mi olduğunu belirlemek için kullanılacak.
+  // Bu üç satırda, new Date() objesi ile şu anki tarihi ve saati alıyoruz. getHours() metoduyla saat, getMinutes() metoduyla dakika ve getSeconds() metoduyla saniye bilgilerini alıyoruz ve bunları sırasıyla h, m ve s değişkenlerine atıyoruz.
   if (h > 12) {
     h = h - 12;
     ampm = "PM";
   }
-//Bu koşulda, eğer saat (h) 12'den büyükse, 12 çıkararak 12 saatlik formatta göstermek için h değişkenini güncelliyoruz ve ampm değişkenini "PM" olarak ayarlıyoruz.
+  //Bu koşulda, eğer saat (h) 12'den büyükse, 12 çıkararak 12 saatlik formatta göstermek için h değişkenini güncelliyoruz ve ampm değişkenini "PM" olarak ayarlıyoruz.
   h = h < 10 ? "0" + h : h;
   m = m < 10 ? "0" + m : m;
   s = s < 10 ? "0" + s : s;
-//Bu üç satırda, saat (h), dakika (m) ve saniye (s) değerlerini kontrol ediyoruz. Eğer herhangi bir değer 10'dan küçükse, başına "0" ekliyoruz (örneğin, 9'u "09" yapmak için). Bu, saatin daha düzgün görünmesini sağlıyor.
-  hourEl.innerText = h;
-  minuteEl.innerText = m;
-  secondEl.innerText = s;
-  ampmEl.innerText = ampm;
-//Bu dört satırda, hourEl, minuteEl, secondEl ve ampmEl elementlerinin innerText özelliğini sırasıyla saat (h), dakika (m), saniye (s) ve AM/PM (ampm) değerleri ile güncelliyoruz. Bu, HTML sayfasındaki ilgili alanların yeni saat, dakika, saniye ve AM/PM bilgileri ile güncellenmesini sağlıyor.
+  //Bu üç satırda, saat (h), dakika (m) ve saniye (s) değerlerini kontrol ediyoruz. Eğer herhangi bir değer 10'dan küçükse, başına "0" ekliyoruz (örneğin, 9'u "09" yapmak için). Bu, saatin daha düzgün görünmesini sağlıyor.
+  //hourEl.innerText = h;
+  //minuteEl.innerText = m;
+  //secondEl.innerText = s;
+  //ampmEl.innerText = ampm;
+  //Bu dört satırda, hourEl, minuteEl, secondEl ve ampmEl elementlerinin innerText özelliğini sırasıyla saat (h), dakika (m), saniye (s) ve AM/PM (ampm) değerleri ile güncelliyoruz. Bu, HTML sayfasındaki ilgili alanların yeni saat, dakika, saniye ve AM/PM bilgileri ile güncellenmesini sağlıyor.
 
-//Bu satırda, setTimeout fonksiyonunu kullanarak updateClock fonksiyonunu 1 saniye (1000 milisaniye) sonra tekrar çağırıyoruz. Bu, saatin her saniye güncellenmesini sağlıyor.
+  //Bu satırda, setTimeout fonksiyonunu kullanarak updateClock fonksiyonunu 1 saniye (1000 milisaniye) sonra tekrar çağırıyoruz. Bu, saatin her saniye güncellenmesini sağlıyor.
 
   setTimeout(() => {
     updateClock();
@@ -164,8 +168,9 @@ function updateClock() {
 updateClock();
 //Bu satırda, updateClock fonksiyonunu çağırıyoruz, böylece saat güncellenmeye başlıyor ve her saniye kendini yeniliyor.
 
-Bu kod parçası, bir dijital saati her saniye güncelleyerek HTML belgesinde göstermek için kullanılır.
+//Bu kod parçası, bir dijital saati her saniye güncelleyerek HTML belgesinde göstermek için kullanılır.
 
+//setTimeout fonksiyonu, JavaScript'te belirli bir işlevin veya kod bloğunun belirli bir süre sonra (milisaniye cinsinden) çalıştırılmasını sağlayan bir zamanlayıcı fonksiyonudur. Bu fonksiyon, zaman gecikmesi sona erdiğinde belirtilen işlevi veya kodu bir kere çalıştırır.
 setTimeout(() => {
   console.log("Bu mesaj 3 saniye sonra görünecek.");
 }, 3000);
@@ -330,9 +335,8 @@ switch (gun) {
   case 3:
     document.write("Bugün Çarşamba" + "<br>");
     break;
-    default:
+  default:
     document.write("Gün Bulunamadı" + "<br>");
-
 }
 
 document.write("-------------------------------------" + "<br>");
@@ -394,3 +398,89 @@ do {
 // } catch (error) {
 //   alert("HATA OLUŞTU");
 // }
+
+//! PROJE
+
+//!DEĞİŞKEN TANIMLAMA
+//1--Bu iki satırda, .next ve .prev sınıfına sahip HTML öğelerini seçer ve next ve prev adlı değişkenlere atarız. Bu öğeler, ileri ve geri düğmelerini temsil eder.
+let next = document.querySelector(".next");
+let prev = document.querySelector(".prev");
+
+//!İleri Butonu İçin Olay Dinleyici
+//2--next değişkenine (ileri butonuna) bir click olayı eklenir. Butona tıklanıldığında aşağıdaki işlev çalışır:
+//let items = document.querySelectorAll(".item");: .item sınıfına sahip tüm öğeleri seçer ve items adlı NodeList içine alır.
+//document.querySelector(".slide").appendChild(items[0]);: .slide sınıfına sahip öğeye ilk items öğesini (yani items[0]) ekler. Bu, ilk öğeyi listenin sonuna taşır.
+next.addEventListener("click", function () {
+  let items = document.querySelectorAll(".item");
+  document.querySelector(".slide").appendChild(items[0]);
+});
+
+//!Geri Butonu İçin Olay Dinleyici
+//3--prev değişkenine (geri butonuna) bir click olayı eklenir. Butona tıklanıldığında aşağıdaki işlev çalışır:
+//let items = document.querySelectorAll(".item");: .item sınıfına sahip tüm öğeleri seçer ve items adlı NodeList içine alır.
+//document.querySelector(".slide").prepend(items[items.length - 1]);: .slide sınıfına sahip öğeye items listesinin son öğesini ekler (yani items[items.length - 1]). Bu, son öğeyi listenin başına taşır.
+
+prev.addEventListener("click", function () {
+  let items = document.querySelectorAll(".item");
+  document.querySelector(".slide").prepend(items[items.length - 1]);
+});
+/*Genel Akış
+İleri Butonuna Tıklama: İlk öğe listenin sonuna taşınır, bu sayede slaytlar sağa doğru kayar.
+Geri Butonuna Tıklama: Son öğe listenin başına taşınır, bu sayede slaytlar sola doğru kayar.
+Bu şekilde, kullanıcı ileri ve geri butonlarını kullanarak slaytlar arasında gezinebilir.
+*/
+
+/*
+ Bir ebeveyn öğe oluşturma
+let parent = document.createElement('div');
+
+Bir çocuk öğe oluşturma
+let child = document.createElement('p');
+child.textContent = 'Bu bir paragraf.';
+
+Çocuk öğeyi ebeveyn öğeye ekleme
+parent.appendChild(child);
+
+Artık parent öğesi şu şekilde görünür:
+<div>
+ <p>Bu bir paragraf.</p>
+ </div>
+
+
+*/
+
+let items = ["elma", "armut", "portakal", "muz"];
+
+console.log(items[items.length - 1]); // "muz"
+
+//JSON (Javascript Object Notion) !Veri aktarım türü !hafif !taşınabilir
+//Javascriptte veri alışverişi yapılırken en çok kullanılan veri biçimidir.
+//çok hızlı gönderim alım yapılabilir.bolca kullanılır.javascprit dizi ve objelerinden oluşur.
+//verileri optimize etmek ve taşımak için oluşturulmuş yazılması okunması kolayolan metin tabanlı.anahtar ve değer çifti.sınıfta olan öğrencileri tutabilirsiniz.
+let data = {
+  calisanlar: [
+    { name: "Selin", surname: "Atmaca" },
+    { name: "Selin1", surname: "Atmaca" },
+    { name: "Selin2", surname: "Atmaca" },
+    { name: "Selin3", surname: "Atmaca" },
+  ],
+  musteriler: [
+    { name: "Meryem", surname: "Test" },
+    { name: "Meryem", surname: "Test" },
+    { name: "Meryem", surname: "Test" },
+  ],
+};
+
+console.log(data);
+
+//json verisini stringe çevirme
+const stringData = JSON.stringify(data);
+document.write(stringData + "<br>");
+
+//json stringi json işleme
+const normalData = JSON.parse(stringData);
+console.log("normal", normalData);
+
+data.calisanlar.forEach((calisan) => {
+  document.write(calisan.name + "<br>");
+});
